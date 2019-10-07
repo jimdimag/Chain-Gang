@@ -2,6 +2,8 @@
 
 require_once('../../../private/initialize.php');
 
+require_login();
+
 if(!isset($_GET['id'])) {
   redirect_to(url_for('/staff/bicycles/index.php'));
 }
@@ -22,7 +24,7 @@ if(is_post_request()) {
 
   
   if($result === true) {
-    $_SESSION['message'] = 'The bicycle was updated successfully.';
+    $session->message('The bicycle was updated successfully.');
     redirect_to(url_for('/staff/bicycles/show.php?id=' . $id));
   } else {
     // show errors
