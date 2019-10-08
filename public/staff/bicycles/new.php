@@ -7,8 +7,7 @@ require_login();
 if(is_post_request()) {
 
   // Create record using post parameters
-  $args = $_POST['bicycle']; 
-
+  $args = $_POST['bicycle'];
   $bicycle = new Bicycle($args);
   $result = $bicycle->save();
 
@@ -22,7 +21,7 @@ if(is_post_request()) {
 
 } else {
   // display the form
-  $bicycle =new Bicycle;
+  $bicycle = new Bicycle;
 }
 
 ?>
@@ -37,7 +36,7 @@ if(is_post_request()) {
   <div class="bicycle new">
     <h1>Create Bicycle</h1>
 
-    <?php  echo display_errors($bicycle->errors); ?>
+    <?php echo display_errors($bicycle->errors); ?>
 
     <form action="<?php echo url_for('/staff/bicycles/new.php'); ?>" method="post">
 

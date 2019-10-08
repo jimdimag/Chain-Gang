@@ -67,7 +67,7 @@ footer {
 }
 
 ul#menu {
-  list-style: none;
+  list-style-type: none!important;
   overflow: hidden;
   width: 485px;
   padding: 0;
@@ -75,6 +75,7 @@ ul#menu {
 }
 
 ul#menu li {
+  list-style-type: none!important;
   float: left;
   margin: 25px;
 }

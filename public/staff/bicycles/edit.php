@@ -8,7 +8,6 @@ if(!isset($_GET['id'])) {
   redirect_to(url_for('/staff/bicycles/index.php'));
 }
 $id = $_GET['id'];
-
 $bicycle = Bicycle::find_by_id($id);
 if($bicycle == false) {
   redirect_to(url_for('/staff/bicycles/index.php'));
@@ -17,12 +16,10 @@ if($bicycle == false) {
 if(is_post_request()) {
 
   // Save record using post parameters
-  $args = $_POST['bicycle']; 
-
+  $args = $_POST['bicycle'];
   $bicycle->merge_attributes($args);
   $result = $bicycle->save();
 
-  
   if($result === true) {
     $session->message('The bicycle was updated successfully.');
     redirect_to(url_for('/staff/bicycles/show.php?id=' . $id));
@@ -32,7 +29,8 @@ if(is_post_request()) {
 
 } else {
 
-  
+  // display the form
+
 }
 
 ?>
@@ -47,12 +45,12 @@ if(is_post_request()) {
   <div class="bicycle edit">
     <h1>Edit Bicycle</h1>
 
-    <?php  echo display_errors($bicycle->errors); ?>
+    <?php echo display_errors($bicycle->errors); ?>
 
     <form action="<?php echo url_for('/staff/bicycles/edit.php?id=' . h(u($id))); ?>" method="post">
 
       <?php include('form_fields.php'); ?>
-      
+
       <div id="operations">
         <input type="submit" value="Edit Bicycle" />
       </div>

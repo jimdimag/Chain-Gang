@@ -8,7 +8,6 @@ if(!isset($_GET['id'])) {
   redirect_to(url_for('/staff/bicycles/index.php'));
 }
 $id = $_GET['id'];
-
 $bicycle = Bicycle::find_by_id($id);
 if($bicycle == false) {
   redirect_to(url_for('/staff/bicycles/index.php'));
@@ -16,8 +15,9 @@ if($bicycle == false) {
 
 if(is_post_request()) {
 
-$result = $bicycle->delete();
-$session->message('The bicycle was deleted successfully.');
+  // Delete bicycle
+  $result = $bicycle->delete();
+  $session->message('The bicycle was deleted successfully.');
   redirect_to(url_for('/staff/bicycles/index.php'));
 
 } else {
